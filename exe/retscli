@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'retscli'
+
+Retscli::Cli.start(ARGV)

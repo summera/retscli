@@ -79,7 +79,7 @@ Search metadata tables
 
 ## Contributing
 
-1. Fork it ( https://github.com/ianks/octodown/fork )
+1. Fork it ( https://github.com/summera/retscli/fork )
 1. Create your feature branch (`git checkout -b my-new-feature`)
 1. Commit your changes (`git commit -am 'Add some feature'`)
 1. Run the test suite (`bundle exec rake`)

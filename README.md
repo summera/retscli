@@ -1,4 +1,4 @@
-# Retscli
+# retscli
 
 [![Gem Version](https://badge.fury.io/rb/retscli.svg)](https://badge.fury.io/rb/retscli)
 [![Build Status](https://travis-ci.org/summera/retscli.svg?branch=master)](https://travis-ci.org/summera/retscli)

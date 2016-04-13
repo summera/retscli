@@ -1,4 +1,8 @@
 # Retscli
+
+[![Gem Version](https://badge.fury.io/rb/retscli.svg)](https://badge.fury.io/rb/retscli)
+[![Build Status](https://travis-ci.org/summera/retscli.svg?branch=master)](https://travis-ci.org/summera/retscli)
+
 CLI for querying RETS servers and searching metadata.
 
 This gem is built on top of the [rets](http://github.com/estately/rets) gem, which handles the actual querying and parsing of the RETS server requests. Big thanks to the [Estately](http://www.estately.com) team for their work!

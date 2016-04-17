@@ -45,5 +45,24 @@ describe Retscli::Shell do
 
       mock.verify
     end
+
+    it 'does not raise error' do
+      raise_proc = Proc.new { raise StandardError.new('Some Error') }
+      Retscli::ShellCommands.stub(:start, raise_proc) do
+        subject.execute_shell_command('search property res (ListingID=0+)', StringIO.new)
+      end
+    end
+
+    it 'prints error to IO' do
+      error = StandardError.new('Some Error')
+      raise_proc = Proc.new { raise error }
+      io = StringIO.new
+      Retscli::ShellCommands.stub(:start, raise_proc) do
+        subject.execute_shell_command('search property res (ListingID=0+)', io)
+
+      end
+
+      assert_match(/.*#{error.message}.*/, io.string)
+    end
   end
 end

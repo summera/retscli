@@ -3,6 +3,7 @@ require "terminal-table"
 module Retscli
   class DisplayAdapter
     NO_RESULTS = 'No Results'.freeze
+    EMPTY_VALUE = '<empty>'.freeze
 
     def initialize(client)
       @client = client
@@ -149,7 +150,7 @@ module Retscli
         term_table.rows = [[NO_RESULTS]]
       else
         term_table.headings = results.first.keys
-        term_table.rows = results.map{ |result| result.values }
+        term_table.rows = results.map{ |result| result.values.map!{ |value| value.to_s.empty? ? EMPTY_VALUE : value } }
       end
 
      term_table

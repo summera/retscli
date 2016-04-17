@@ -18,6 +18,11 @@ describe Retscli::DisplayAdapter do
             'heading1' => 'value1',
             'heading2' => 'value2'
           }]
+        elsif params[:query] == '(ListingID=100+)'
+          [{
+            'heading1' => 'value1',
+            'heading2' => ''
+          }]
         else
           []
         end
@@ -328,6 +333,12 @@ describe Retscli::DisplayAdapter do
       result = subject.search('property', 'res', '(ListingID=0+)', :count => true)
       values = result.rows.map{ |row| row.cells.map{ |cell| cell.value } }
       assert_equal [[2]], values
+    end
+
+    it 'replaces empty strings with empty value' do
+      result = subject.search('property', 'res', '(ListingID=100+)')
+      values = result.rows.map{ |row| row.cells.map{ |cell| cell.value } }
+      assert_equal [['value1', Retscli::DisplayAdapter::EMPTY_VALUE]], values
     end
   end
 

@@ -112,14 +112,19 @@ module Retscli
     end
 
     def search(resource, klass, query, options={})
+      select = options[:select] ? options[:select].join(',') : ''
+      count = options[:count] ? 2 : 0
+
       results = @client.find(
         :all,
         search_type: resource,
         class: klass,
         query: query,
+        select: select,
         limit: options[:limit],
         offset: options[:offset],
-        count: options[:count] ? 2 : 0,
+        count: count,
+        format: options[:format],
         no_records_not_an_error: true
       )
 

@@ -102,11 +102,15 @@ module Retscli
     method_option :limit, :aliases => '-l', :desc => 'limit', :type => :numeric, :default => 20
     method_option :offset, :aliases => '-o', :desc => 'Offset', :type => :numeric
     method_option :count, :aliases => '-c', :desc => 'Return result count', :type => :boolean, :default => false
+    method_option :select, :aliases => '-s', :desc => 'Select specific fields from records', :type => :array, :default => []
+    method_option :format, :aliases => '-f', :desc => 'Rets data return format', :enum => ['COMPACT', 'COMPACT-DECODED', 'STANDARD-XML'], :default => 'COMPACT-DECODED'
     def search(resource, klass, query)
       search_options = {
         :limit => options[:limit],
         :offset => options[:offset],
-        :count => options[:count]
+        :count => options[:count],
+        :select => options[:select],
+        :format => options[:format]
       }
 
       results = @display_adapter.search(resource, klass, query, search_options)

@@ -7,6 +7,22 @@ describe Retscli::DisplayAdapter do
 
       def logout; end
 
+      def find(quantity, params={})
+        if params[:count] == 2
+          2
+        elsif params[:query] == '(ListingID=0+)'
+          [{
+            'heading1' => 'value1',
+            'heading2' => 'value2'
+          }, {
+            'heading1' => 'value1',
+            'heading2' => 'value2'
+          }]
+        else
+          []
+        end
+      end
+
       def metadata
         Rets::Metadata::Root.new(nil, RETS_METADATA)
       end
@@ -286,6 +302,32 @@ describe Retscli::DisplayAdapter do
 
         assert_equal result, subject.search_metadata('streetname', :resources => ['property'], :classes => ['cmmlland'])
       end
+    end
+  end
+
+  describe '#search' do
+    it 'returns results table with correct headings' do
+      result = subject.search('property', 'res', '(ListingID=0+)')
+      headings = result.headings.map{ |row| row.cells.map{ |cell| cell.value } }
+      assert_equal [['heading1', 'heading2']], headings
+    end
+
+    it 'returns results table with correct values' do
+      result = subject.search('property', 'res', '(ListingID=0+)')
+      values = result.rows.map{ |row| row.cells.map{ |cell| cell.value } }
+      assert_equal [['value1', 'value2'],['value1', 'value2']], values
+    end
+
+    it 'returns table with no results' do
+      result = subject.search('property', 'res', '')
+      values = result.rows.map{ |row| row.cells.map{ |cell| cell.value } }
+      assert_equal [[Retscli::DisplayAdapter::NO_RESULTS]], values
+    end
+
+    it 'returns table with number of results' do
+      result = subject.search('property', 'res', '(ListingID=0+)', :count => true)
+      values = result.rows.map{ |row| row.cells.map{ |cell| cell.value } }
+      assert_equal [[2]], values
     end
   end
 

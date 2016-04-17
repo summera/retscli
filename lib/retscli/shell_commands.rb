@@ -97,5 +97,20 @@ module Retscli
     end
 
     map 'search-metadata' => :search_metadata
+
+    desc 'search [RESOURCE] [CLASS] [QUERY]', 'Search resources, e.g. properties, open houses, etc.'
+    method_option :limit, :aliases => '-l', :desc => 'limit', :type => :numeric, :default => 20
+    method_option :offset, :aliases => '-o', :desc => 'Offset', :type => :numeric
+    method_option :count, :aliases => '-c', :desc => 'Return result count', :type => :boolean, :default => false
+    def search(resource, klass, query)
+      search_options = {
+        :limit => options[:limit],
+        :offset => options[:offset],
+        :count => options[:count]
+      }
+
+      results = @display_adapter.search(resource, klass, query, search_options)
+      @display_adapter.page(results)
+    end
   end
 end

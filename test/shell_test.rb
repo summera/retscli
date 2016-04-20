@@ -23,7 +23,7 @@ describe Retscli::Shell do
     DummyShell.new(dummy_client)
   end
 
-  describe '#start' do
+  describe '#execute_shell_command' do
     it 'does not split quoted text' do
       mock = MiniTest::Mock.new
       mock.expect(:call, '', [['search-metadata', 'this is my quoted search'], Hash])

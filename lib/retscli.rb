@@ -14,6 +14,7 @@ module Retscli
     method_option :version, aliases: '-v'
     method_option :agent, aliases: '-a'
     method_option :ua_password, aliases: '-ap'
+    method_option :debug, :aliases => '-d', :desc => 'Turn on debug mode', :type => :boolean, :default => false
     def validate(url)
       client = rets_client(url, options)
 
@@ -34,6 +35,7 @@ module Retscli
     method_option :version, aliases: '-v'
     method_option :agent, aliases: '-a'
     method_option :ua_password, aliases: '-ap'
+    method_option :debug, :aliases => '-d', :desc => 'Turn on debug mode', :type => :boolean, :default => false
     def capabilities(url)
       client = rets_client(url, options)
 
@@ -53,20 +55,24 @@ module Retscli
     method_option :version, aliases: '-v'
     method_option :agent, aliases: '-a'
     method_option :ua_password, aliases: '-ap'
+    method_option :debug, :aliases => '-d', :desc => 'Turn on debug mode', :type => :boolean, :default => false
     def console(url)
       client = rets_client(url, options)
       Retscli::Shell.new(client).start
     end
 
     no_commands do
-      def rets_client(url, params)
+      def rets_client(url, params={})
+        logger = options[:debug] ? Logger.new($stdout) : nil
+
         ::Rets::Client.new({
           :login_url => url,
           :username => params[:username],
           :password => params[:password],
           :version => params[:version],
           :agent => params[:agent],
-          :ua_password => params[:ua_password]
+          :ua_password => params[:ua_password],
+          :logger => logger
         })
       end
     end

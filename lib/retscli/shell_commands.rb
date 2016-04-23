@@ -17,6 +17,11 @@ module Retscli
       all_commands.keys.map{ |command| command.gsub('_', '-') }
     end
 
+    desc 'login', 'Re-Login to RETS server. Use if session is no longer valid'
+    def login
+      puts @display_adapter.login
+    end
+
     desc 'capabilities', 'Display capabilities for rets server'
     def capabilities
       @display_adapter.page(@display_adapter.capabilities)

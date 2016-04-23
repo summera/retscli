@@ -10,6 +10,11 @@ module Retscli
       @colorer = ::Thor::Shell::Color.new
     end
 
+    def login
+      @client.login
+      set_color("\u2713 Logged in", :green)
+    end
+
     def capabilities
       Terminal::Table.new(:rows => @client.capabilities.to_a)
     end

@@ -49,15 +49,17 @@ $ retscli console http://rets.server.com -u summera -p password
 
 summera@rets.server.com > help
 Commands:
-  capabilities               # Display capabilities for rets server
-  classes [RESOURCE]         # List available classes for resource
-  help [COMMAND]             # Describe available commands or one specific command
-  metadata                   # View metadata
-  objects [RESOURCE]         # List available objects for resource
-  resources                  # List available resources
-  search-metadata            # Search metadata tables
-  tables [RESOURCE] [CLASS]  # List available tables for class of resource
-  timezone-offset            # System timezone offset
+  capabilities                       # Display capabilities for rets server
+  classes [RESOURCE]                 # List available classes for resource
+  help [COMMAND]                     # Describe available commands or one specific command
+  login                              # Re-Login to RETS server. Use if session is no longer valid
+  metadata                           # View metadata
+  objects [RESOURCE]                 # List available objects for resource
+  resources                          # List available resources
+  search [RESOURCE] [CLASS] [QUERY]  # Search resources, e.g. properties, open houses, etc.
+  search-metadata                    # Search metadata tables
+  tables [RESOURCE] [CLASS]          # List available tables for class of resource
+  timezone-offset                    # System timezone offset
 ```
 
 Again, to see available flags/options, run help on the command. Many of the commands have an `editor` option if you feel the need to get down and dirty in your editor of choice.

@@ -17,6 +17,11 @@ module Retscli
       all_commands.keys.map{ |command| command.gsub('_', '-') }
     end
 
+    desc 'login', 'Re-Login to RETS server. Use if session is no longer valid'
+    def login
+      puts @display_adapter.login
+    end
+
     desc 'capabilities', 'Display capabilities for rets server'
     def capabilities
       @display_adapter.page(@display_adapter.capabilities)
@@ -97,5 +102,24 @@ module Retscli
     end
 
     map 'search-metadata' => :search_metadata
+
+    desc 'search [RESOURCE] [CLASS] [QUERY]', 'Search resources, e.g. properties, open houses, etc.'
+    method_option :limit, :aliases => '-l', :desc => 'limit', :type => :numeric, :default => 20
+    method_option :offset, :aliases => '-o', :desc => 'Offset', :type => :numeric
+    method_option :count, :aliases => '-c', :desc => 'Return result count', :type => :boolean, :default => false
+    method_option :select, :aliases => '-s', :desc => 'Select specific fields from records', :type => :array, :default => []
+    method_option :format, :aliases => '-f', :desc => 'Rets data return format', :enum => ['COMPACT', 'COMPACT-DECODED', 'STANDARD-XML'], :default => 'COMPACT-DECODED'
+    def search(resource, klass, query)
+      search_options = {
+        :limit => options[:limit],
+        :offset => options[:offset],
+        :count => options[:count],
+        :select => options[:select],
+        :format => options[:format]
+      }
+
+      results = @display_adapter.search(resource, klass, query, search_options)
+      @display_adapter.page(results)
+    end
   end
 end

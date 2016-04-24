@@ -18,24 +18,24 @@ module Retscli
     end
 
     def start
-      begin
-        while line = readline_with_hist_management
-          if EXIT_COMMANDS.include?(line)
-            close
-          else
-            execute_shell_command(line)
-          end
+      while line = readline_with_hist_management
+        if EXIT_COMMANDS.include?(line)
+          close
+        else
+          execute_shell_command(line)
         end
-      rescue Interrupt
-        close
       end
     end
 
     # NOTE: this should probably be private, but making it public allowed
     # for easier testing without having to deal with mocking readline. Can we
     # find a better way?
-    def execute_shell_command(line)
-      Retscli::ShellCommands.start(split_line(line), :display_adapter => @display_adapter)
+    def execute_shell_command(line, out=$stdout)
+      begin
+        Retscli::ShellCommands.start(split_line(line), :display_adapter => @display_adapter)
+      rescue => e
+        out.puts @colorer.set_color(e.message, :red)
+      end
     end
 
     private

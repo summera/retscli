@@ -2,9 +2,17 @@ require "terminal-table"
 
 module Retscli
   class DisplayAdapter
+    NO_RESULTS = 'No Results'.freeze
+    EMPTY_VALUE = '<empty>'.freeze
+
     def initialize(client)
       @client = client
       @colorer = ::Thor::Shell::Color.new
+    end
+
+    def login
+      @client.login
+      set_color("\u2713 Logged in", :green)
     end
 
     def capabilities
@@ -108,6 +116,30 @@ module Retscli
       search_results
     end
 
+    def search(resource, klass, query, options={})
+      select = options[:select] ? options[:select].join(',') : ''
+      count = options[:count] ? 2 : 0
+
+      results = @client.find(
+        :all,
+        search_type: resource,
+        class: klass,
+        query: query,
+        select: select,
+        limit: options[:limit],
+        offset: options[:offset],
+        count: count,
+        format: options[:format],
+        no_records_not_an_error: true
+      )
+
+      if results.is_a?(Integer)
+        resource_table([{ 'count' => results }])
+      else
+        resource_table(results)
+      end
+    end
+
     def page(output)
       begin
         pager = ENV['PAGER'] || 'less'
@@ -122,6 +154,18 @@ module Retscli
     end
 
     private
+    def resource_table(results=[])
+      term_table = Terminal::Table.new
+      if results.empty?
+        term_table.rows = [[NO_RESULTS]]
+      else
+        term_table.headings = results.first.keys
+        term_table.rows = results.map{ |result| result.values.map!{ |value| value.to_s.empty? ? EMPTY_VALUE : value } }
+      end
+
+     term_table
+    end
+
     def open_tempfile_with_content(editor, initial_content)
       temp_file do |f|
         f.puts(initial_content)

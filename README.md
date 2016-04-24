@@ -86,7 +86,8 @@ Search metadata tables
 ## Notes
 - When opening output in your editor, retscli will check the `$EDITOR` environment variable. If this is not set, it falls back to nano.
 - Much of the output is piped through `less` by default to allow for easy paging. If you'd like to change this, set your preferred pager in the `$PAGER` environment variable.
-- Retscli uses the ruby readline module for the rets console
+- Retscli uses the ruby readline module for the rets console.
+- If any arguments and/or options have spaces in them, you will need to wrap them in quotes so that retscli does not split on the spaces.
 
 ## Contributing
 

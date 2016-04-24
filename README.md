@@ -14,7 +14,7 @@ This gem is built on top of the [rets](http://github.com/estately/rets) gem, whi
 
 ## Usage
 
-#### Shell Commands
+#### CLI Commands
 ```bash
 $ retscli help
 Commands:

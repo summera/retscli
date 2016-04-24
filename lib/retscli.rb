@@ -13,7 +13,7 @@ module Retscli
     method_option :password, aliases: '-p', :desc => 'Password'
     method_option :version, aliases: '-v', :desc => 'Rets version', :default => 'RETS/1.7.2'
     method_option :agent, aliases: '-a', :desc => 'User agent'
-    method_option :ua_password, aliases: '-ap', :desc => 'User agent password'
+    method_option :ua_password, aliases: '-t', :desc => 'User agent password'
     method_option :debug, :aliases => '-d', :desc => 'Debug mode', :type => :boolean, :default => false
     def validate(url)
       client = rets_client(url, options)
@@ -34,7 +34,7 @@ module Retscli
     method_option :password, aliases: '-p', :desc => 'Password'
     method_option :version, aliases: '-v', :desc => 'Rets version', :default => 'RETS/1.7.2'
     method_option :agent, aliases: '-a', :desc => 'User agent'
-    method_option :ua_password, aliases: '-ap', :desc => 'User agent password'
+    method_option :ua_password, aliases: '-t', :desc => 'User agent password'
     method_option :debug, :aliases => '-d', :desc => 'Debug mode', :type => :boolean, :default => false
     def capabilities(url)
       client = rets_client(url, options)
@@ -54,7 +54,7 @@ module Retscli
     method_option :password, aliases: '-p', :desc => 'Password'
     method_option :version, aliases: '-v', :desc => 'Rets version', :default => 'RETS/1.7.2'
     method_option :agent, aliases: '-a', :desc => 'User agent'
-    method_option :ua_password, aliases: '-ap', :desc => 'User agent password'
+    method_option :ua_password, aliases: '-t', :desc => 'User agent password'
     method_option :debug, :aliases => '-d', :desc => 'Debug mode', :type => :boolean, :default => false
     def console(url)
       client = rets_client(url, options)

@@ -7,7 +7,8 @@ CLI for querying RETS servers and searching metadata.
 
 This gem is built on top of the [rets](http://github.com/estately/rets) gem, which handles the actual querying and parsing of the RETS server requests. Big thanks to the [Estately](http://www.estately.com) team for their work!
 
-![retscli gif](https://github.com/summera/gifs/blob/master/retscli/retscli.gif?raw=true)
+![retscli gif](https://github.com/summera/gifs/blob/master/retscli/search_metadata_cropped.gif?raw=true)
+![retscli png](https://github.com/summera/gifs/blob/master/retscli/search.png?raw=true)
 
 ## Installation
     $ gem install retscli

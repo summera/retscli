@@ -86,7 +86,13 @@ module Retscli
 
     def close
       system('stty', @stty_save)
-      @client.logout
+
+      begin
+        @client.logout
+      rescue => e
+        puts @colorer.set_color(e.message, :red)
+      end
+
       exit
     end
   end

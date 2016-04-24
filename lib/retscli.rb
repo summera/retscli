@@ -9,12 +9,12 @@ module Retscli
   class Cli < Thor
 
     desc 'validate [LOGIN URL]', 'Validate rets credentials'
-    method_option :username, aliases: '-u'
-    method_option :password, aliases: '-p'
-    method_option :version, aliases: '-v'
-    method_option :agent, aliases: '-a'
-    method_option :ua_password, aliases: '-ap'
-    method_option :debug, :aliases => '-d', :desc => 'Turn on debug mode', :type => :boolean, :default => false
+    method_option :username, aliases: '-u', :desc => 'Username'
+    method_option :password, aliases: '-p', :desc => 'Password'
+    method_option :version, aliases: '-v', :desc => 'Rets version', :default => 'RETS/1.7.2'
+    method_option :agent, aliases: '-a', :desc => 'User agent'
+    method_option :ua_password, aliases: '-ap', :desc => 'User agent password'
+    method_option :debug, :aliases => '-d', :desc => 'Debug mode', :type => :boolean, :default => false
     def validate(url)
       client = rets_client(url, options)
 
@@ -30,12 +30,12 @@ module Retscli
     end
 
     desc 'capabilities [LOGIN URL]', 'Display capabilities for rets server'
-    method_option :username, aliases: '-u'
-    method_option :password, aliases: '-p'
-    method_option :version, aliases: '-v'
-    method_option :agent, aliases: '-a'
-    method_option :ua_password, aliases: '-ap'
-    method_option :debug, :aliases => '-d', :desc => 'Turn on debug mode', :type => :boolean, :default => false
+    method_option :username, aliases: '-u', :desc => 'Username'
+    method_option :password, aliases: '-p', :desc => 'Password'
+    method_option :version, aliases: '-v', :desc => 'Rets version', :default => 'RETS/1.7.2'
+    method_option :agent, aliases: '-a', :desc => 'User agent'
+    method_option :ua_password, aliases: '-ap', :desc => 'User agent password'
+    method_option :debug, :aliases => '-d', :desc => 'Debug mode', :type => :boolean, :default => false
     def capabilities(url)
       client = rets_client(url, options)
 
@@ -50,12 +50,12 @@ module Retscli
     end
 
     desc 'console [LOGIN URL]', 'Start rets console'
-    method_option :username, aliases: '-u'
-    method_option :password, aliases: '-p'
-    method_option :version, aliases: '-v'
-    method_option :agent, aliases: '-a'
-    method_option :ua_password, aliases: '-ap'
-    method_option :debug, :aliases => '-d', :desc => 'Turn on debug mode', :type => :boolean, :default => false
+    method_option :username, aliases: '-u', :desc => 'Username'
+    method_option :password, aliases: '-p', :desc => 'Password'
+    method_option :version, aliases: '-v', :desc => 'Rets version', :default => 'RETS/1.7.2'
+    method_option :agent, aliases: '-a', :desc => 'User agent'
+    method_option :ua_password, aliases: '-ap', :desc => 'User agent password'
+    method_option :debug, :aliases => '-d', :desc => 'Debug mode', :type => :boolean, :default => false
     def console(url)
       client = rets_client(url, options)
       Retscli::Shell.new(client).start

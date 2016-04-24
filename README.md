@@ -32,11 +32,13 @@ Usage:
   retscli console [LOGIN URL]
 
 Options:
-  -u, [--username=USERNAME]
-  -p, [--password=PASSWORD]
-  -v, [--version=VERSION]
-  -a, [--agent=AGENT]
-  -ap, [--ua-password=UA_PASSWORD]
+  -u, [--username=USERNAME]        # Username
+  -p, [--password=PASSWORD]        # Password
+  -v, [--version=VERSION]          # Rets version
+                                   # Default: RETS/1.7.2
+  -a, [--agent=AGENT]              # User agent
+  -t, [--ua-password=UA_PASSWORD]  # User agent password
+  -d, [--debug], [--no-debug]      # Debug mode
 
 Start rets console
 ```

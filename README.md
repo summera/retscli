@@ -12,6 +12,13 @@ This gem is built on top of the [rets](http://github.com/estately/rets) gem, whi
 ## Installation
     $ gem install retscli
 
+## Features
+- Search metadata for keywords. Results are highlighted for readability.
+- Search resources. Results are displayed in a nicely formatted ascii table.
+- Open command results in your editor of choice.
+- Debug RETS requests and queries in debug mode.
+- Command results are paged using less by default.
+
 ## Usage
 
 #### CLI Commands

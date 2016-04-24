@@ -43,6 +43,9 @@ Options:
 Start rets console
 ```
 
+#### Debug Mode
+To view requests being made to the RETS server, enable debug mode with the `-d` flag. Once enabled, helpful info will be logged to `$stdout`. This is helpful to debug errors thrown by the RETS server and to adjust queries.
+
 #### Rets Console Commands
 After dropping into the RETS console, you get a bunch of useful commands for searching and exploring the RETS server
 

@@ -13,7 +13,7 @@ RENDERED_METDATA = "Resource: Agent (Key Field: rets_agt_id)"\
 "\n    Visible Name: Agent"\
 "\n    Description : Agent"\
 "\n  Object: image"\
-"\n    MimeType: "\
+"\n    MimeType: image/jpeg"\
 "\n    Description: Agent Photo"\
 "\nResource: Office (Key Field: DO_OFFICE_ID)"\
 "\n  Class: Office"\
@@ -47,7 +47,7 @@ RENDERED_METDATA = "Resource: Agent (Key Field: rets_agt_id)"\
 "\n    Visible Name: Commercial_Lease"\
 "\n    Description : Commercial_Lease"\
 "\n  Object: image"\
-"\n    MimeType: "\
+"\n    MimeType: image/jpeg"\
 "\n    Description: Property_Photo"\
 "\nResource: OpenHouse (Key Field: rets_oh_id)"\
 "\n  Class: OpenHouse"\

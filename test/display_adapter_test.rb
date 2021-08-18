@@ -85,7 +85,7 @@ describe Retscli::DisplayAdapter do
   describe '#objects' do
     it 'renders objects' do
       objects = "Object: image"\
-      "\n  MimeType: "\
+      "\n  MimeType: image/jpeg"\
       "\n  Description: Property_Photo"
 
       assert_equal objects, subject.objects('property')

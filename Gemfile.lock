@@ -1,0 +1,49 @@
+PATH
+  remote: .
+  specs:
+    retscli (0.2.0)
+      rets (~> 0.10)
+      terminal-table (~> 1.5)
+      thor (~> 0.19)
+      tty-spinner (~> 0.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    http-cookie (1.0.4)
+      domain_name (~> 0.5)
+    httpclient (2.8.3)
+    mini_portile2 (2.6.1)
+    minitest (5.14.4)
+    nokogiri (1.12.3)
+      mini_portile2 (~> 2.6.1)
+      racc (~> 1.4)
+    racc (1.5.2)
+    rake (10.5.0)
+    rets (0.11.2)
+      http-cookie (~> 1.0.0)
+      httpclient (~> 2.7)
+      nokogiri (~> 1.5)
+    terminal-table (1.8.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
+    thor (0.20.3)
+    tty-cursor (0.7.1)
+    tty-spinner (0.9.3)
+      tty-cursor (~> 0.7)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.7)
+    unicode-display_width (1.7.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest (~> 5.0)
+  rake (~> 10.0)
+  retscli!
+
+BUNDLED WITH
+   2.1.4
